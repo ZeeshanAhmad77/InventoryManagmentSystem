@@ -2,33 +2,46 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Web.Script.Serialization;
 
 namespace InventoryManagmentSystem
 {
     public class Accountant : User
     {
-        //Constructer
-        public Accountant()
-        { }
+        // Method Return the table of Amdmin as a List<Admin>
+   
+        public List<Accountant> GetAccountantList()
+        {
+            string cs = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+            List<Accountant> accountantList = new List<Accountant>();
+            using (SqlConnection con = new SqlConnection(cs))
+            {
 
-        
-            public Accountant( string name,string password)
-        {
-            this.Name = name;
-            this.Password = password;
-            
+                SqlCommand cmd = new SqlCommand("spGetAccountant", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    Accountant accountant = new Accountant();
+                    accountant.Id = Convert.ToInt32(rdr["id"]);
+                    accountant.Name = rdr["name"].ToString();
+                    accountant.Password = rdr["password"].ToString();
+                    accountantList.Add(accountant);
+                }
+
+            }
+            return accountantList;
+
+
         }
-        // Method Returns the LIst of Accountant
-        public List<Accountant>  GetAccountantList()
-        {
-            List<Accountant> lisOfAccountant = new List<Accountant>();
-            lisOfAccountant.Add(new Accountant("Accountant1", "123"));
-            lisOfAccountant.Add(new Accountant("Accountant2", "123"));
-            lisOfAccountant.Add(new Accountant("Accountant3", "123"));
-            lisOfAccountant.Add(new Accountant("Accountant4", "123"));
-            
-            return lisOfAccountant;
-        }
+
+
+
+       
 
 
 

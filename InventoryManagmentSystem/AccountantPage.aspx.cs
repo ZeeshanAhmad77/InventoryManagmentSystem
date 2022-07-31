@@ -11,6 +11,17 @@ namespace InventoryManagmentSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            heading.InnerText = "Welcome to Accountant Page " ;
+            name.InnerText = "User Name " + Session["userName"].ToString();
+            password.InnerText = "Having the password  = " + Session["password"].ToString();
+
+        }
+
+
+
+        protected void btnHomePage1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("HomePage.aspx");
 
         }
     }

@@ -68,7 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AccountantPage.aspx" />
+    <Content Include="AccountantServices.asmx" />
     <Content Include="AdminPage.aspx" />
+    <Content Include="HomePage.aspx" />
+    <Content Include="LoginJavaScript.js" />
     <Content Include="LoginPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -81,12 +84,23 @@
     <Compile Include="AccountantPage.aspx.designer.cs">
       <DependentUpon>AccountantPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AccountantServices.asmx.cs">
+      <DependentUpon>AccountantServices.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="AdminPage.aspx.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdminPage.aspx.designer.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HomePage.aspx.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomePage.aspx.designer.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>

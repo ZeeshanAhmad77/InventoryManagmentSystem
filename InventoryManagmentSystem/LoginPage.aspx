@@ -14,41 +14,26 @@
 
               <!--  Defining TextBox  -->
             <asp:Label Text=" User Name" ID="LableUserName"  runat="server"> User Name</asp:Label>
-            <asp:TextBox ID="userName" runat="server"  ></asp:TextBox> <br />
+            <asp:TextBox ID="txtUserName" runat="server"  ></asp:TextBox> <br />
               <!--  Seperation Dive  -->
             <div class="sepation"></div>
             <asp:Label Text=" Password" ID="LablePassword" runat="server" > Password</asp:Label>
-            <asp:TextBox ID="password" runat="server"  ></asp:TextBox> <br />
+            <asp:TextBox ID="txtPassword" runat="server"  ></asp:TextBox> <br />
               <!--  Seperation Dive  -->
             <div class="sepation"></div>
 
             <!--  Defining Buttons  -->
-            <asp:Button   ID="login" runat="server"  Text="Login"  OnClientClick="javascript: return Validate() "  OnClick="login_Click"/> <br />
+            <asp:Button   ID="btnLogin" runat="server"  Text="Login"  OnClientClick="javascript: return Validate()" OnClick="btnLogin_Click" /> 
        
             <asp:Label Text=" Incorrect User Credentials" ID="lblErrorMessage" runat="server" > </asp:Label>
 
+            <br />
+            <input id="checkBoxAdmin" type="checkbox"  runat="server"/> Login as admin<br />
+       
         </div>
+
+
     </form>
-
-   <script>
-       function Validate() {
-           var userName = document.getElementById("userName").value;
-           var Password = document.getElementById("password").value;
-           try {
-
-               if (userName == "") throw " User Name is Empty";
-              // if (userName != "zee") throw " Incorrect User Name";
-               if (Password == "") throw " Password is Empty";
-              // if (Password != "pass") throw " Incorrect Password ";
-               return true;
-           }
-           catch (err) {
-               alert(err);
-               return false;
-           }
-       }
-
-
-   </script>
-</body>
+    <script src="LoginJavaScript.js"></script>
+    </body>
 </html>
